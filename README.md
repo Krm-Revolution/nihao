@@ -2,16 +2,9 @@
 ---
 `cd` to project directory:
 ```bash
-cd https://github.com/Krm-Revolution/nihao/tree/main
-List available files:
-
-bash
-Copy code
-ls //available list
-Run a Python file:
-
-bash
-Copy code
-python [fileName].py
-ALL DONES EZ
+git clone https://github.com/Krm-Revolution/nihao
+cd nihao
+python setup.py
+python start.py
+EZ DONES!
 ```
