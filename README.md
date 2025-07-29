@@ -14,6 +14,4 @@ bash
 Copy code
 python [fileName].py
 ALL DONES EZ
-typescript
-Copy code
 ```
