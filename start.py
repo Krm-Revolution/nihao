@@ -13,8 +13,7 @@ $$$$$$$\ |$$$$$$$  | \$$$$  /  $$ |              $$ |  \$$$$$$\        $$$$$$$\ 
 $$  __$$\ $$  __$$<   \$$  /   $$ |              $$ |   \____$$\       $$  __$$\ $$ |  $$ |  $$ |   
 $$ |  $$ |$$ |  $$ |   $$ |    $$ |              $$ |  $$\   $$ |      $$ |  $$ |$$ |  $$ |  $$ |   
 $$$$$$$  |$$ |  $$ |   $$ |    $$$$$$$$\       $$$$$$\ \$$$$$$  |      $$$$$$$  | $$$$$$  |  $$ |   
-\_______/ \__|  \__|   \__|    \________|      \______| \______/       \_______/  \______/   \__|   
-                                                                                                    
+\_______/ \__|  \__|   \__|    \________|      \______| \______/       \_______/  \______/   \__|                                                                                                       
 """
 
 def list_python_files(directory):
@@ -43,7 +42,7 @@ def main():
         choice = int(input(Fore.GREEN + "\nEnter number to run: ")) - 1
         if 0 <= choice < len(files):
             selected_file = os.path.join(folder, files[choice])
-            print(Fore.BLUE + f"\n🚀 Running: {files[choice]}\n")
+            print(Fore.BLUE + f"\nRunning ☕: {files[choice]}\n")
             subprocess.run(["python", selected_file])
         else:
             print(Fore.RED + "❌ Invalid choice.")
