@@ -1,9 +1,19 @@
 import os
 import sys
 import subprocess
-from colorama import init, Fore, Style
 
-init(autoreset=True)
+# ANSI color codes
+class Color:
+    RESET = "\033[0m"
+    BOLD = "\033[1m"
+
+    RED = "\033[31m"
+    GREEN = "\033[32m"
+    YELLOW = "\033[33m"
+    BLUE = "\033[34m"
+    CYAN = "\033[36m"
+    WHITE = "\033[37m"
+
 
 HEADER = r"""
 $$$$$$$\  $$$$$$$\ $$\     $$\ $$\             $$$$$$\  $$$$$$\        $$$$$$$\   $$$$$$\ $$$$$$$$\ 
@@ -16,38 +26,44 @@ $$$$$$$  |$$ |  $$ |   $$ |    $$$$$$$$\       $$$$$$\ \$$$$$$  |      $$$$$$$  
 \_______/ \__|  \__|   \__|    \________|      \______| \______/       \_______/  \______/   \__|                                                                                                       
 """
 
+
 def list_python_files(directory):
     try:
-        files = [f for f in os.listdir(directory) if f.endswith('.py')]
+        files = [f for f in os.listdir(directory) if f.endswith(".py")]
         return files
     except FileNotFoundError:
-        print(Fore.RED + f"❌ Folder '{directory}' not found.")
+        print(Color.RED + f"❌ Folder '{directory}' not found." + Color.RESET)
         sys.exit(1)
 
+
 def main():
-    print(Fore.GREEN + Style.BRIGHT + HEADER)
+    print(Color.GREEN + Color.BOLD + HEADER + Color.RESET)
 
     folder = "bryl"
     files = list_python_files(folder)
 
     if not files:
-        print(Fore.YELLOW + "⚠️ No Python files found in 'bryl/' folder.")
+        print(Color.YELLOW + "⚠️ No Python files found in 'bryl/' folder." + Color.RESET)
         return
 
-    print(Fore.CYAN + "\nAvailable Python files:\n")
+    print(Color.CYAN + "\nAvailable Python files:\n" + Color.RESET)
+
     for i, file in enumerate(files, start=1):
-        print(f"{Fore.WHITE}[{i}] {file}")
+        print(f"{Color.WHITE}[{i}] {file}{Color.RESET}")
 
     try:
-        choice = int(input(Fore.GREEN + "\nEnter number to run: ")) - 1
+        choice = int(input(Color.GREEN + "\nEnter number to run: " + Color.RESET)) - 1
+
         if 0 <= choice < len(files):
             selected_file = os.path.join(folder, files[choice])
-            print(Fore.BLUE + f"\nRunning ☕: {files[choice]}\n")
+            print(Color.BLUE + f"\nRunning ☕: {files[choice]}\n" + Color.RESET)
             subprocess.run(["python", selected_file])
         else:
-            print(Fore.RED + "❌ Invalid choice.")
+            print(Color.RED + "❌ Invalid choice." + Color.RESET)
+
     except ValueError:
-        print(Fore.RED + "❌ Please enter a valid number.")
+        print(Color.RED + "❌ Please enter a valid number." + Color.RESET)
+
 
 if __name__ == "__main__":
     main()
