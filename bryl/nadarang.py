@@ -1,11 +1,8 @@
 import time
 import sys
-from colorama import init, Fore, Style
-
-init()
 
 def print_lyric(char, speed):
-    sys.stdout.write(Fore.WHITE + Style.BRIGHT + char + Style.RESET_ALL)
+    sys.stdout.write(f"\033[1;97m{char}\033[0m")
     sys.stdout.flush()
     time.sleep(speed)
 
