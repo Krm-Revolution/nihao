@@ -1,21 +1,16 @@
 import time
 import sys
-from colorama import init, Fore, Style
 
-init()
-
-def animate_text(text, color=Fore.WHITE, delay=0.09):
-    """Animates text one character at a time with the specified color."""
+def animate_text(text, color_code="97", delay=0.09):
     for char in text:
-        sys.stdout.write(color + Style.BRIGHT + char + Style.RESET_ALL)
+        sys.stdout.write(f"\033[1;{color_code}m{char}\033[0m")
         sys.stdout.flush()
         time.sleep(delay)
     print()
 
 def sing_lyrics():
-    # 
     intro = "MULTO☕"
-    animate_text(intro, color=Fore.MAGENTA, delay=0.07)
+    animate_text(intro, color_code="95", delay=0.07)
     time.sleep(1)
 
     lyrics = [
@@ -32,23 +27,19 @@ def sing_lyrics():
     ]
 
     for line in lyrics:
-        # 
         if line.strip() == "":
             time.sleep(1.5)
         else:
-            # 
             if "multo" in line.lower():
-                line_color = Fore.CYAN  # 
-                delay = 0.1  # 
+                line_color = "96"
+                delay = 0.1
             else:
-                line_color = Fore.WHITE
+                line_color = "97"
                 delay = 0.09
-            animate_text(line, color=line_color, delay=delay)
-            # 
+            animate_text(line, color_code=line_color, delay=delay)
             time.sleep(0.5)
 
-    # 
-    print(Fore.WHITE + Style.BRIGHT + "💔" * 1 + Style.RESET_ALL)
+    print(f"\033[1;97m{'💔' * 1}\033[0m")
     time.sleep(0.5)
 
 if __name__ == "__main__":
